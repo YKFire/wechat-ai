@@ -1,0 +1,14 @@
+FROM python:3.7-slim
+
+WORKDIR /work
+
+COPY . /work
+
+RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+RUN pip3 install itchat-uos==1.5.0.dev0
+RUN pip3 install websocket
+RUN pip3 install websocket_client
+
+# 如果不能自动运行请尝试加上：RUN chmod +x main.py
+
+CMD ["python", "test.py"]
